@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Local env files
+.env
+.env.*
+
+# Temporary files
+*.tmp
+*.orig
+
+# JavaScript dependencies and caches
+node_modules/
+.cache/
+
+# Remotion local artifacts
+remotion_video/qa_frames/

@@ -1,0 +1,190 @@
+{
+  "packages": [
+    {
+      "package_id": "himalayan_explorer",
+      "name": "Himalayan Explorer",
+      "price": 28.95,
+      "value_if_separate": 35.50,
+      "savings": 6.55,
+      "description": "Complete journey through Nepal's flavors—a curated experience featuring appetizer, main course, bread, drink, and dessert",
+      "cultural_note": "This represents a traditional Nepali meal structure, honoring the belief that 'guests are as god'",
+      "includes": {
+        "appetizer": {
+          "choices": [
+            {"dish_id": "dish.app.veg_samosa", "name": "Veg Samosa (2 pcs)"},
+            {"dish_id": "dish.app.veg_pakora", "name": "Veg Pakora"},
+            {"dish_id": "dish.app.paneer_pakora", "name": "Paneer Pakora (6 pcs)"},
+            {"dish_id": "dish.app.lamb_samosa", "name": "Lamb Samosa (2 pcs)"},
+            {"dish_id": "dish.app.chicken_wings", "name": "Chicken Wings"}
+          ],
+          "max_selections": 1
+        },
+        "main": {
+          "choices": [
+            {"dish_id": "dish.curry.butter_chicken", "name": "Butter Chicken"},
+            {"dish_id": "dish.curry.chicken_tikka_masala", "name": "Chicken Tikka Masala"},
+            {"dish_id": "dish.curry.korma.navaratna", "name": "Navaratna Korma"},
+            {"dish_id": "dish.curry.palak_paneer", "name": "Palak Paneer"},
+            {"dish_id": "dish.curry.chana_masala", "name": "Chana Masala"},
+            {"dish_id": "dish.momo.steamed", "name": "Steamed MoMo"},
+            {"dish_id": "dish.momo.jhol", "name": "Jhol MoMo"}
+          ],
+          "max_selections": 1
+        },
+        "bread": {
+          "choices": [
+            {"dish_id": "bread.naan.plain", "name": "Plain Naan"},
+            {"dish_id": "bread.naan.garlic", "name": "Garlic Naan"},
+            {"dish_id": "bread.roti", "name": "Roti"},
+            {"dish_id": "bread.naan.cheese", "name": "Cheese Naan"}
+          ],
+          "max_selections": 1
+        },
+        "drink": {
+          "choices": [
+            {"dish_id": "drink.lassi.mango", "name": "Mango Lassi"},
+            {"dish_id": "drink.lassi.strawberry", "name": "Strawberry Lassi"},
+            {"dish_id": "drink.lassi.salt", "name": "Salt Lassi"},
+            {"dish_id": "drink.chai.nepali", "name": "Organic Nepali Chai Tea"},
+            {"dish_id": "drink.mohi", "name": "Mohi"}
+          ],
+          "max_selections": 1
+        },
+        "dessert": {
+          "choices": [
+            {"dish_id": "dessert.kheer", "name": "Kheer"},
+            {"dish_id": "dessert.lal_mohan", "name": "Lal Mohan (Gulab Jamun)"},
+            {"dish_id": "dessert.rasmalai", "name": "Rasmalai"}
+          ],
+          "max_selections": 1
+        }
+      },
+      "target_audience": ["first_timers", "adventurous", "value_seekers"],
+      "upsell_priority": "high",
+      "promotion_triggers": ["main_course_selected", "no_appetizer_or_dessert"]
+    },
+    {
+      "package_id": "first_timer_journey",
+      "name": "First Timer's Journey",
+      "price": 24.95,
+      "value_if_separate": 30.75,
+      "savings": 5.80,
+      "description": "Gentle introduction to Nepalese cuisine—perfect for newcomers",
+      "cultural_note": "This curated selection introduces you to Nepal's most approachable flavors",
+      "includes": {
+        "appetizer": {
+          "fixed": {"dish_id": "dish.app.veg_samosa", "name": "Veg Samosa (2 pcs)"}
+        },
+        "main": {
+          "choices": [
+            {"dish_id": "dish.curry.butter_chicken", "name": "Butter Chicken"},
+            {"dish_id": "dish.curry.korma.navaratna", "name": "Navaratna Korma"}
+          ],
+          "max_selections": 1
+        },
+        "bread": {
+          "fixed": {"dish_id": "bread.naan.plain", "name": "Plain Naan"}
+        },
+        "drink": {
+          "fixed": {"dish_id": "drink.lassi.mango", "name": "Mango Lassi"}
+        },
+        "dessert": {
+          "fixed": {"dish_id": "dessert.kheer", "name": "Kheer"}
+        }
+      },
+      "target_audience": ["first_timers", "cautious"],
+      "upsell_priority": "high",
+      "promotion_triggers": ["new_to_nepalese_cuisine", "mild_spice_preference"]
+    },
+    {
+      "package_id": "spice_lover_feast",
+      "name": "Spice Lover's Feast",
+      "price": 32.95,
+      "value_if_separate": 40.75,
+      "savings": 7.80,
+      "description": "For those who crave bold, fiery flavors—a journey through Nepal's spiciest dishes",
+      "cultural_note": "Nepal's mountain regions are known for bold spices that warm you from within",
+      "includes": {
+        "appetizer": {
+          "choices": [
+            {"dish_id": "dish.app.chicken65", "name": "Chicken 65"},
+            {"dish_id": "dish.app.chicken_chilli", "name": "Chicken Chilli"},
+            {"dish_id": "dish.app.sekuwa", "name": "Sekuwa (Chicken/Lamb)"}
+          ],
+          "max_selections": 1
+        },
+        "main": {
+          "choices": [
+            {"dish_id": "dish.curry.vindaloo.chicken", "name": "Vindaloo (Chicken)"},
+            {"dish_id": "dish.curry.vindaloo.lamb", "name": "Vindaloo (Lamb)"},
+            {"dish_id": "dish.curry.kadai.chicken", "name": "Kadai Curry (Chicken)"},
+            {"dish_id": "dish.momo.chili", "name": "Chili MoMo"}
+          ],
+          "max_selections": 1
+        },
+        "bread": {
+          "fixed": {"dish_id": "bread.naan.garlic", "name": "Garlic Naan"}
+        },
+        "drink": {
+          "fixed": {"dish_id": "drink.lassi.salt", "name": "Salt Lassi"}
+        },
+        "dessert": {
+          "fixed": {"dish_id": "dessert.rasmalai", "name": "Rasmalai"}
+        }
+      },
+      "target_audience": ["spice_lovers", "adventurous"],
+      "upsell_priority": "medium",
+      "promotion_triggers": ["hot_spice_preference", "spicy_dish_selected"]
+    },
+    {
+      "package_id": "vegetarian_thali_experience",
+      "name": "Vegetarian Thali Experience",
+      "price": 26.95,
+      "value_if_separate": 33.75,
+      "savings": 6.80,
+      "description": "Complete vegetarian journey honoring Nepal's plant-based traditions",
+      "cultural_note": "Thali means 'plate' and represents a balanced, complete meal—each element offers different nutrition and flavor",
+      "includes": {
+        "appetizer": {
+          "fixed": {"dish_id": "dish.app.platter.veg", "name": "Veg Appetizer Platter"}
+        },
+        "main": {
+          "choices": [
+            {"dish_id": "dish.curry.korma.navaratna", "name": "Navaratna Korma"},
+            {"dish_id": "dish.curry.palak_paneer", "name": "Palak Paneer"},
+            {"dish_id": "dish.curry.chana_masala", "name": "Chana Masala"},
+            {"dish_id": "dish.curry.mix_vegetable", "name": "Mix Vegetable Curry"},
+            {"dish_id": "dish.curry.dal_makhani", "name": "Dal Makhani"}
+          ],
+          "max_selections": 1
+        },
+        "bread": {
+          "fixed": {"dish_id": "bread.roti", "name": "Roti"}
+        },
+        "drink": {
+          "fixed": {"dish_id": "drink.lassi.strawberry", "name": "Strawberry Lassi"}
+        },
+        "dessert": {
+          "fixed": {"dish_id": "dessert.lal_mohan", "name": "Lal Mohan (Gulab Jamun)"}
+        }
+      },
+      "target_audience": ["vegetarians", "vegans", "health_conscious"],
+      "upsell_priority": "high",
+      "promotion_triggers": ["vegetarian_preference", "vegan_preference"]
+    }
+  ],
+  "promotion_strategy": {
+    "when_to_show": [
+      "guest_selects_main_course_without_appetizer",
+      "guest_selects_main_course_without_dessert",
+      "guest_asks_what_to_order",
+      "guest_expresses_confusion"
+    ],
+    "messaging": {
+      "value_proposition": "Save $[savings] while experiencing the complete Nepali meal tradition",
+      "cultural_hook": "This is how meals are traditionally served in Nepal—complete and balanced",
+      "urgency": "Available for dine-in only"
+    }
+  }
+}
+

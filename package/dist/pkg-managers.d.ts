@@ -1,0 +1,10 @@
+import type { Template } from './templates';
+export type PackageManager = 'npm' | 'yarn' | 'pnpm' | 'bun';
+export declare const selectPackageManager: () => PackageManager;
+export declare const getInstallCommand: (manager: PackageManager) => "yarn" | "npm i" | "pnpm i" | "bun install" | undefined;
+export declare const getRunCommand: (manager: PackageManager) => "npm run" | "yarn run" | "pnpm run" | "bun run";
+export declare const getRenderCommand: (manager: PackageManager) => "npx remotion render" | "yarn remotion render" | "pnpm exec remotion render" | "bunx remotion render";
+export declare const getUpgradeCommand: (manager: PackageManager) => "npx remotion upgrade" | "yarn remotion upgrade" | "pnpm exec remotion upgrade" | "bunx remotion upgrade";
+export declare const getDevCommand: (manager: PackageManager, template: Template) => string | undefined;
+export declare const getPackageManagerVersion: (manager: PackageManager) => Promise<string>;
+export declare const getPackageManagerVersionOrNull: (manager: PackageManager) => Promise<string | null>;

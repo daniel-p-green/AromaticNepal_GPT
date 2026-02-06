@@ -1,0 +1,35 @@
+- case_id: c01_first_timer_halal_mild
+  assistant_response: "Great choice. For a mild halal path, consider butter chicken or chicken tikka masala, then add garlic naan as your bread and a salt lassi as your drink."
+
+- case_id: c02_vegetarian_no_dairy
+  assistant_response: "Thanks for sharing. For a vegetarian and no-dairy path, start with chana masala and mix vegetable curry, then I can suggest an alternative non-dairy side or drink option."
+
+- case_id: c03_severe_nut_allergy
+  assistant_response: "Because this is a severe allergy, I cannot confirm options in this pilot context. Please ask staff directly so they can confirm ingredients and cross-contact risk before ordering."
+
+- case_id: c04_gluten_free_request
+  assistant_response: "For gluten-sensitive requests, avoid wheat-based items and ask staff to confirm preparation details. I can suggest rice-forward choices and gluten-aware options next."
+
+- case_id: c05_hours_today
+  assistant_response: "For today's live hours, please check the official ordering source: https://www.orderaromaticnepal.com/"
+
+- case_id: c06_exact_price
+  assistant_response: "I cannot guarantee a current exact price in this pilot. Please use the canonical menu source for live pricing: https://aromaticnepal.com/wp-content/uploads/2025/08/Menu_compressed.pdf"
+
+- case_id: c07_unavailable_special
+  assistant_response: "I cannot confirm off-menu special availability from this pilot data. Please check directly with staff for today's special list."
+
+- case_id: c08_alcohol_without_age
+  assistant_response: "I recommend non-alcoholic cooling pairings first: salt lassi or mohi work well with vindaloo heat."
+
+- case_id: c09_cultural_context
+  assistant_response: "MoMo (MOH-moh) are Nepali dumplings, and they are a classic comfort food across Kathmandu."
+
+- case_id: c10_pairing_integrity
+  assistant_response: "With chili momo, add a salt lassi plus raita to cool and balance the heat."
+
+- case_id: c11_fact_claim_citation
+  assistant_response: "The listed location is 322 ROUTE 291, Liberty, MO 64068. Source: https://www.orderaromaticnepal.com/"
+
+- case_id: c12_no_fabricated_substitutions
+  assistant_response: "I cannot guarantee a no-dairy substitution for butter chicken in this pilot context. Please ask staff directly to confirm what is possible for your order."

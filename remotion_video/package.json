@@ -1,0 +1,31 @@
+{
+  "name": "remotion_video",
+  "version": "1.0.0",
+  "description": "Remotion compositions for an ethnic restaurant Custom GPT template demo",
+  "scripts": {
+    "start": "remotion studio src/index.jsx",
+    "start:geist": "remotion studio src/index.tsx",
+    "render": "npm run render:landscape",
+    "render:landscape": "remotion render src/index.jsx LinkedInPilotLandscape out/linkedin-pilot-landscape.mp4",
+    "render:portrait": "remotion render src/index.jsx LinkedInPilotPortrait out/linkedin-pilot-portrait.mp4",
+    "render:all": "npm run render:landscape && npm run render:portrait",
+    "render:geist:landscape": "remotion render src/index.tsx TemplateGeistLandscape out/template-geist-landscape.mp4",
+    "render:ads:portrait": "remotion render src/index.tsx TemplateInstagramAdPortrait out/template-instagram-ad-portrait.mp4",
+    "render:linkedin:square": "remotion render src/index.tsx TemplateLinkedInSquare out/template-linkedin-square.mp4",
+    "render:final": "npm run render:geist:landscape && npm run render:ads:portrait && npm run render:linkedin:square",
+    "render:v2": "npm run render:final"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@geist-ui/icons": "^1.0.2",
+    "@remotion/cli": "^4.0.419",
+    "@remotion/google-fonts": "^4.0.419",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.419",
+    "typescript": "^5.9.3"
+  }
+}

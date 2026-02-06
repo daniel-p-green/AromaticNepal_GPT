@@ -1,0 +1,153 @@
+{
+  "upsell_rules": [
+    {
+      "rule_id": "curry_bread_pairing",
+      "trigger": {
+        "condition": "curry_selected",
+        "category": ["Curries", "Vegetarian"],
+        "exclude_if": ["bread_already_selected"]
+      },
+      "upsell_type": "bread",
+      "priority": "high",
+      "message_template": "Curries are meant to be scooped with bread! Add {bread_name} ({price}) to complete your meal?",
+      "recommended_items": [
+        {"dish_id": "bread.naan.plain", "name": "Plain Naan", "price": 2.95, "reason": "Classic pairing"},
+        {"dish_id": "bread.naan.garlic", "name": "Garlic Naan", "price": 3.95, "reason": "Adds aromatic depth"}
+      ],
+      "success_rate_target": 0.6,
+      "cultural_note": "In Nepal, bread is the utensil—tearing naan and sharing it is a sign of friendship"
+    },
+    {
+      "rule_id": "spicy_cooling_drink",
+      "trigger": {
+        "condition": "spice_level >= hot",
+        "spice_levels": ["hot", "extra_hot"],
+        "exclude_if": ["drink_already_selected"]
+      },
+      "upsell_type": "drink",
+      "priority": "high",
+      "message_template": "Balance the heat with {drink_name} ({price})? It's the traditional way to cool your palate.",
+      "recommended_items": [
+        {"dish_id": "drink.lassi.salt", "name": "Salt Lassi", "price": 3.95, "reason": "Traditional cooling drink"},
+        {"dish_id": "drink.lassi.mango", "name": "Mango Lassi", "price": 4.95, "reason": "Sweet balances spice"}
+      ],
+      "success_rate_target": 0.5,
+      "cultural_note": "Lassi is Nepal's answer to balancing bold spices"
+    },
+    {
+      "rule_id": "main_only_appetizer",
+      "trigger": {
+        "condition": "main_course_selected && no_appetizer",
+        "exclude_if": ["appetizer_already_selected", "quick_lunch_indicated"]
+      },
+      "upsell_type": "appetizer",
+      "priority": "medium",
+      "message_template": "Start your Himalayan journey with {appetizer_name} ({price})? It's the perfect introduction.",
+      "recommended_items": [
+        {"dish_id": "dish.app.veg_samosa", "name": "Veg Samosa (2 pcs)", "price": 6.95, "reason": "Gentle introduction"},
+        {"dish_id": "dish.app.platter.veg", "name": "Veg Appetizer Platter", "price": 12.95, "reason": "Try multiple flavors"}
+      ],
+      "success_rate_target": 0.4,
+      "cultural_note": "Meals in Nepal traditionally start with small bites"
+    },
+    {
+      "rule_id": "complete_with_dessert",
+      "trigger": {
+        "condition": "main_course_selected && no_dessert",
+        "exclude_if": ["dessert_already_selected", "quick_lunch_indicated"]
+      },
+      "upsell_type": "dessert",
+      "priority": "medium",
+      "message_template": "End your meal the Nepali way with {dessert_name} ({price})? It's how we complete every celebration.",
+      "recommended_items": [
+        {"dish_id": "dessert.kheer", "name": "Kheer", "price": 3.95, "reason": "Traditional rice pudding"},
+        {"dish_id": "dessert.lal_mohan", "name": "Lal Mohan", "price": 3.95, "reason": "Sweet milk balls"}
+      ],
+      "success_rate_target": 0.25,
+      "cultural_note": "Dessert completes the meal in Nepali tradition"
+    },
+    {
+      "rule_id": "prix_fixe_promotion",
+      "trigger": {
+        "condition": "main_course_selected && (no_appetizer || no_dessert || no_drink)",
+        "exclude_if": ["prix_fixe_already_selected", "guest_declined_upsell"]
+      },
+      "upsell_type": "prix_fixe",
+      "priority": "high",
+      "message_template": "Want the full Himalayan experience? Our '{package_name}' prix fixe includes {includes_list} for just ${price}—that's ${savings} less than ordering separately, and you get to experience the complete Nepali meal tradition!",
+      "recommended_packages": [
+        {
+          "package_id": "himalayan_explorer",
+          "name": "Himalayan Explorer",
+          "price": 28.95,
+          "savings": 6.55,
+          "includes": "appetizer, main, bread, drink, and dessert"
+        },
+        {
+          "package_id": "first_timer_journey",
+          "name": "First Timer's Journey",
+          "price": 24.95,
+          "savings": 5.80,
+          "includes": "complete meal experience"
+        }
+      ],
+      "success_rate_target": 0.3,
+      "cultural_note": "This is how meals are traditionally served in Nepal—complete and balanced"
+    },
+    {
+      "rule_id": "momo_sauce_pairing",
+      "trigger": {
+        "condition": "momo_selected",
+        "category": ["MoMo"],
+        "exclude_if": ["sauce_already_mentioned"]
+      },
+      "upsell_type": "side",
+      "priority": "low",
+      "message_template": "MoMo are traditionally served with tangy tomato-chili achar (sauce). Want to add it?",
+      "recommended_items": [
+        {"dish_id": "side.achar", "name": "Tomato-Chili Achar", "price": 1.95, "reason": "Traditional pairing"}
+      ],
+      "success_rate_target": 0.3,
+      "cultural_note": "Achar (sauce) is essential to the momo experience"
+    },
+    {
+      "rule_id": "biryani_side_pairing",
+      "trigger": {
+        "condition": "biryani_selected",
+        "name_contains": ["Biryani"],
+        "exclude_if": ["side_already_selected"]
+      },
+      "upsell_type": "side",
+      "priority": "medium",
+      "message_template": "Biryani is traditionally served with {side_name} ({price}) for the perfect balance of flavors.",
+      "recommended_items": [
+        {"dish_id": "side.onion_salad", "name": "Onion Salad", "price": 2.95, "reason": "Traditional pairing"},
+        {"dish_id": "side.raita", "name": "Raita", "price": 2.95, "reason": "Cooling yogurt side"}
+      ],
+      "success_rate_target": 0.4,
+      "cultural_note": "Biryani is incomplete without its traditional accompaniments"
+    }
+  ],
+  "upsell_guidelines": {
+    "max_upsells_per_session": 2,
+    "wait_for_response": true,
+    "never_pushy": true,
+    "always_explain_why": true,
+    "use_cultural_context": true
+  },
+  "prix_fixe_promotion": {
+    "show_when": [
+      "guest_selects_main_without_appetizer",
+      "guest_selects_main_without_dessert",
+      "guest_expresses_confusion",
+      "guest_asks_what_to_order"
+    ],
+    "messaging": {
+      "value_proposition": "Save ${savings} while experiencing the complete Nepali meal tradition",
+      "cultural_hook": "This is how meals are traditionally served in Nepal—complete and balanced",
+      "urgency": "Available for dine-in only"
+    },
+    "fallback": "If guest declines prix fixe, suggest individual items instead"
+  }
+}
+

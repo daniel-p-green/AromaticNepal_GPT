@@ -1,0 +1,111 @@
+{
+  "stories": [
+    {
+      "term": "MoMo",
+      "phonetic": "MOH-moh",
+      "story": "MoMo are Nepal's national comfort food and most beloved street snack. In Kathmandu, you'll find momo vendors on every corner, each with their secret spice blend passed down through generations. Families gather around steaming baskets on weekends, and it's often the first food Nepali expats crave when homesick. The word 'momo' comes from the Tibetan word for 'steamed bread,' but Nepal has made it uniquely its own with Himalayan spices.",
+      "emotional_hook": "connection_to_home",
+      "cultural_context": "street_food_culture",
+      "related_dishes": ["dish.momo.steamed", "dish.momo.jhol", "dish.momo.kothey", "dish.momo.fried"],
+      "when_to_share": ["guest_asks_about_momo", "guest_selects_momo", "first_time_visitor"]
+    },
+    {
+      "term": "Thali",
+      "phonetic": "THA-lee",
+      "story": "Thali means 'plate' in Nepali, but it represents so much more—a complete, balanced meal honoring the Nepali belief that 'guests are as god.' Each small bowl offers a different flavor, texture, and nutrition, creating harmony on one plate. Traditionally served on a large metal plate with small bowls (katoris) arranged around rice, a thali includes dal (lentils), vegetables, pickles, yogurt, and dessert. It's how Nepali families eat every day, and sharing a thali is an act of hospitality.",
+      "emotional_hook": "hospitality_tradition",
+      "cultural_context": "daily_life",
+      "related_dishes": ["dish.thali.veg", "dish.thali.chicken", "dish.thali.lamb"],
+      "when_to_share": ["guest_selects_thali", "guest_asks_about_complete_meal", "explaining_prix_fixe"]
+    },
+    {
+      "term": "Sekuwa",
+      "phonetic": "say-KOO-wah",
+      "story": "Sekuwa is Nepal's answer to barbecue—marinated meat cubes grilled over open flames, often found at roadside stalls in the evening. The name comes from the Nepali word for 'skewer,' and it's a social food, meant to be shared with friends over conversation. Mustard oil, garlic, and ginger give it that distinctive Nepali flavor that's both bold and aromatic.",
+      "emotional_hook": "social_dining",
+      "cultural_context": "street_food_culture",
+      "related_dishes": ["dish.app.sekuwa.chicken", "dish.app.sekuwa.lamb"],
+      "when_to_share": ["guest_selects_sekuwa", "guest_likes_grilled_food"]
+    },
+    {
+      "term": "Korma",
+      "phonetic": "KOR-mah",
+      "story": "Korma represents the refined side of Nepali cuisine—slow-cooked, creamy, and delicately spiced. The technique came from Mughal influences but Nepal adapted it with local ingredients. Cashews and yogurt create that signature richness, while Himalayan spices add depth without overwhelming heat. It's often served at celebrations and special occasions.",
+      "emotional_hook": "celebration_food",
+      "cultural_context": "special_occasions",
+      "related_dishes": ["dish.curry.korma.chicken", "dish.curry.korma.navaratna"],
+      "when_to_share": ["guest_selects_korma", "guest_prefers_mild_creamy"]
+    },
+    {
+      "term": "Vindaloo",
+      "phonetic": "vin-dah-LOO",
+      "story": "Vindaloo's fiery reputation comes from its origins—Portuguese traders brought vinegar-based preservation techniques to Goa, which then spread to Nepal. The tangy, spicy combination was perfect for Nepal's mountain regions, where bold flavors warm you from within. It's not for the faint of heart, but for spice lovers, it's an adventure.",
+      "emotional_hook": "adventure",
+      "cultural_context": "mountain_cuisine",
+      "related_dishes": ["dish.curry.vindaloo.chicken", "dish.curry.vindaloo.lamb"],
+      "when_to_share": ["guest_selects_vindaloo", "guest_likes_spicy", "explaining_spice_levels"]
+    },
+    {
+      "term": "Lassi",
+      "phonetic": "LAH-see",
+      "story": "Lassi is the perfect balance to Nepal's bold spices—a yogurt-based drink that cools and refreshes. In Nepal, you'll find it everywhere, from street vendors to home kitchens. Sweet lassi (with mango or strawberry) is a treat, while salt lassi is the traditional way to balance a spicy meal. It's more than a drink; it's a culinary tool for harmony.",
+      "emotional_hook": "balance_harmony",
+      "cultural_context": "daily_life",
+      "related_dishes": ["drink.lassi.mango", "drink.lassi.strawberry", "drink.lassi.salt"],
+      "when_to_share": ["guest_selects_spicy_dish", "guest_asks_about_drinks", "pairing_recommendation"]
+    },
+    {
+      "term": "Naan",
+      "phonetic": "NAHN",
+      "story": "Naan is more than bread—it's the utensil of Nepali cuisine. Baked in a tandoor (clay oven) at 900°F, it puffs up with steam, creating that perfect texture for scooping curries. In Nepal, tearing naan and sharing it is a sign of friendship. Garlic naan adds aromatic depth, while plain naan lets the curry shine.",
+      "emotional_hook": "sharing_friendship",
+      "cultural_context": "dining_etiquette",
+      "related_dishes": ["bread.naan.plain", "bread.naan.garlic", "bread.naan.cheese"],
+      "when_to_share": ["guest_selects_curry", "explaining_bread_pairing", "upsell_opportunity"]
+    },
+    {
+      "term": "Kheer",
+      "phonetic": "KEER",
+      "story": "Kheer is Nepal's rice pudding—simple, comforting, and served at every celebration. Made with basmati rice, milk, cardamom, and a hint of saffron, it's often the first dessert Nepali children learn to make. It represents home, comfort, and the sweetness of life. Served warm or cold, it's the perfect end to any meal.",
+      "emotional_hook": "comfort_home",
+      "cultural_context": "celebration_food",
+      "related_dishes": ["dessert.kheer"],
+      "when_to_share": ["guest_asks_about_dessert", "completing_meal", "first_time_visitor"]
+    },
+    {
+      "term": "Chai",
+      "phonetic": "CHAI (like 'chai tea' but just 'chai')",
+      "story": "Nepali chai is more than tea—it's a ritual. Brewed with black tea, milk, and a blend of Himalayan spices (cardamom, cinnamon, ginger), it's served throughout the day. In Nepal, offering chai to guests is a sign of respect and hospitality. It's warming, aromatic, and the perfect pause in your day.",
+      "emotional_hook": "ritual_hospitality",
+      "cultural_context": "daily_life",
+      "related_dishes": ["drink.chai.nepali"],
+      "when_to_share": ["guest_asks_about_drinks", "explaining_beverage_options", "cultural_education"]
+    },
+    {
+      "term": "Himalayan Spices",
+      "phonetic": "him-ah-LAY-an",
+      "story": "Nepal sits at the crossroads of India, Tibet, and China, creating a unique spice profile. Turmeric, cumin, coriander, and cardamom grow in the foothills, while mountain regions favor bold chilies and warming spices. These aren't just flavors—they're medicine, tradition, and connection to the land. Every spice blend tells a story of trade routes, family recipes, and regional identity.",
+      "emotional_hook": "connection_to_land",
+      "cultural_context": "culinary_heritage",
+      "related_dishes": ["all_dishes"],
+      "when_to_share": ["guest_asks_about_spices", "explaining_flavor_profile", "cultural_education"]
+    }
+  ],
+  "storytelling_guidelines": {
+    "when_to_share": [
+      "Guest asks 'What is [term]?'",
+      "Guest selects dish with cultural term",
+      "First-time visitor exploring menu",
+      "Guest expresses interest in culture",
+      "Explaining prix fixe packages"
+    ],
+    "how_to_share": [
+      "Keep stories 2-3 sentences unless guest asks for more",
+      "Always connect to emotional hook",
+      "Relate to guest's experience when possible",
+      "End with invitation: 'Want to know more?'"
+    ],
+    "tone": "warm, educational, never condescending"
+  }
+}
+

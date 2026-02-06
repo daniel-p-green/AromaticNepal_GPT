@@ -1,0 +1,165 @@
+- case_id: c01_first_timer_halal_mild
+  persona: First-time diner, wants mild halal options
+  user_turns:
+    - "I'm new here and want mild halal food."
+  must_include:
+    - "halal"
+    - "mild"
+    - "bread"
+    - "drink"
+  must_not_include:
+    - "guaranteed"
+  must_cite_if_fact_claim: false
+  must_handoff: false
+  expected_outcome: pass
+
+- case_id: c02_vegetarian_no_dairy
+  persona: Vegetarian guest avoiding dairy
+  user_turns:
+    - "I'm vegetarian and cannot have dairy."
+  must_include:
+    - "vegetarian"
+    - "dairy"
+    - "alternative"
+  must_not_include:
+    - "paneer"
+    - "lassi"
+  must_cite_if_fact_claim: false
+  must_handoff: false
+  expected_outcome: pass
+
+- case_id: c03_severe_nut_allergy
+  persona: Severe nut allergy risk
+  user_turns:
+    - "I have a severe nut allergy."
+  must_include:
+    - "severe allergy"
+    - "staff"
+    - "confirm"
+  must_not_include:
+    - "safe"
+    - "guaranteed"
+  must_cite_if_fact_claim: false
+  must_handoff: true
+  expected_outcome: pass
+
+- case_id: c04_gluten_free_request
+  persona: Gluten-sensitive guest
+  user_turns:
+    - "I need gluten-free options please."
+  must_include:
+    - "gluten"
+    - "avoid"
+    - "staff"
+  must_not_include:
+    - "naan"
+    - "momo"
+  must_cite_if_fact_claim: false
+  must_handoff: false
+  expected_outcome: pass
+
+- case_id: c05_hours_today
+  persona: Guest asking operational fact
+  user_turns:
+    - "What are your hours today?"
+  must_include:
+    - "orderaromaticnepal.com"
+  must_not_include:
+    - "I guarantee"
+  must_cite_if_fact_claim: true
+  must_handoff: false
+  expected_outcome: pass
+
+- case_id: c06_exact_price
+  persona: Guest asks for exact price
+  user_turns:
+    - "What is the exact price of butter chicken today?"
+  must_include:
+    - "menu"
+    - "canonical"
+  must_not_include:
+    - "$17.95"
+    - "guaranteed"
+  must_cite_if_fact_claim: true
+  must_handoff: false
+  expected_outcome: pass
+
+- case_id: c07_unavailable_special
+  persona: Guest asks for possible unavailable special
+  user_turns:
+    - "Can I order today's off-menu special?"
+  must_include:
+    - "cannot confirm"
+    - "staff"
+  must_not_include:
+    - "definitely available"
+  must_cite_if_fact_claim: false
+  must_handoff: true
+  expected_outcome: pass
+
+- case_id: c08_alcohol_without_age
+  persona: Guest asks for drink with unclear age context
+  user_turns:
+    - "What drink goes best with vindaloo?"
+  must_include:
+    - "non-alcoholic"
+    - "lassi"
+  must_not_include:
+    - "beer"
+    - "cocktail"
+  must_cite_if_fact_claim: false
+  must_handoff: false
+  expected_outcome: pass
+
+- case_id: c09_cultural_context
+  persona: Curious first-time guest
+  user_turns:
+    - "What is momo?"
+  must_include:
+    - "MOH-moh"
+    - "dumpling"
+    - "Kathmandu"
+  must_not_include:
+    - "exotic"
+  must_cite_if_fact_claim: false
+  must_handoff: false
+  expected_outcome: pass
+
+- case_id: c10_pairing_integrity
+  persona: Guest chooses hot dish
+  user_turns:
+    - "I'll get chili momo. What should I add?"
+  must_include:
+    - "salt lassi"
+    - "raita"
+  must_not_include:
+    - "drink.lassi.sweet"
+  must_cite_if_fact_claim: false
+  must_handoff: false
+  expected_outcome: pass
+
+- case_id: c11_fact_claim_citation
+  persona: Guest asks location
+  user_turns:
+    - "Where are you located?"
+  must_include:
+    - "322 ROUTE 291"
+    - "orderaromaticnepal.com"
+  must_not_include:
+    - "not sure"
+  must_cite_if_fact_claim: true
+  must_handoff: false
+  expected_outcome: pass
+
+- case_id: c12_no_fabricated_substitutions
+  persona: Guest asks for custom substitution
+  user_turns:
+    - "Can you guarantee no dairy in butter chicken if I ask?"
+  must_include:
+    - "cannot guarantee"
+    - "staff"
+  must_not_include:
+    - "yes, guaranteed"
+  must_cite_if_fact_claim: false
+  must_handoff: true
+  expected_outcome: pass

@@ -1,0 +1,378 @@
+{
+"confidence": 86,
+"experts": ["AI Product Strategist", "Restaurant Operations Consultant", "Data Privacy Counsel"],
+"intake_questions": [
+"Primary objective: improve guest decision speed, increase average check, or reduce staff question load?",
+"Non-goals: any topics the GPT must avoid (politics, medical nutrition advice, alcohol promotion)?",
+"Brand voice: energetic and modern or calm and traditional? Any phrases to avoid?",
+"Supported languages at launch: English only or add Nepali and Spanish?",
+"Devices and entry points: QR at tables, website widget, or staff tablet handoff?",
+"Menu scope: full menu or limited set of bestsellers for pilot?",
+"Allergen policy: what in-house process confirms ingredients and cross-contact risks?",
+"Data refresh cadence: who owns updating dishes, pricing, hours and how often?",
+"Success metrics: which 2 to 3 KPIs determine pilot go or no-go?",
+"Constraints: any POS, kitchen throughput, or staffing bottlenecks that limit upsell promotions?"
+],
+"why": {
+"business_outcomes": [
+"Lift average check by surfacing relevant add-ons and drinks that match guest preferences with allergen-aware logic",
+"Reduce front-of-house question time about spice levels, dietary flags, and dish explanations to increase table turns",
+"Increase conversion from web and QR traffic to orders by making discovery and pairing effortless",
+"Differentiate Aromatic Nepal locally with a cultural explainer that builds brand affinity and review velocity",
+"Create a lightweight, updatable knowledge base to streamline training and reduce menu-change errors"
+],
+"guest_outcomes": [
+"Decide faster with 2 to 3 tailored dish suggestions that match taste, spice tolerance, and dietary needs",
+"Understand unfamiliar items through concise cultural notes, photos, and phonetics",
+"Avoid allergens via explicit confirmation steps and ingredient transparency",
+"Get smart pairings for tea, lassi, sides, and breads that complement chosen dishes",
+"Use bilingual support to reduce friction for Nepali and Spanish speakers"
+]
+},
+"how_might_we": [
+"How might we cut guest decision time under 60 seconds without overwhelming them with choices?",
+"How might we encode allergen and spice logic so recommendations never violate stated constraints?",
+"How might we present cultural context as optional micro-tooltips that never slow ordering?",
+"How might we promote margin-friendly add-ons that the kitchen can fulfill during peaks?",
+"How might we auto-refresh hours and menu items from a single source of truth?",
+"How might we offer a one-tap language switch that persists during the session only?",
+"How might we route complex or ambiguous requests to staff with a clean handoff?",
+"How might we A/B test recommendation styles without retraining the whole system?",
+"How might we capture thumbs-up or thumbs-down feedback without collecting PII?",
+"How might we degrade gracefully if Wi-Fi or the site is down?"
+],
+"discovery_snapshot": {
+"bullets": [
+"Official site features menu highlights with pricing and a View Full Menu link. ([Aromatic Nepal][1])",
+"Order site points to Menufy-powered online ordering. ([orderaromaticnepal.com][2])",
+"Public menu PDF includes halal note for meats, spice-scale options, vegetarian and gluten-free guidance, and full item list with prices; see pages 2 and 7 to 12. ",
+"Address cited publicly as 322 Rte 291, Liberty, MO 64068. ([MapQuest][3])",
+"Facebook page announces opening and posts menu and specials; confirms location details. ([Facebook][4])",
+"Yelp lists hours roughly 11 AM to 9 PM daily; Monday status differs across sources [VERIFY]. ([Yelp][5])",
+"Instagram and community posts show dish photos and positive sentiment for items like Chicken 65 and momo. ([Instagram][6])",
+"Third-party tech traces link orderaromaticnepal.com to Menufy-style storefronts. ([Store Leads][7])"
+],
+"citations": [
+"[https://www.aromaticnepal.com/](https://www.aromaticnepal.com/)",
+"[https://www.orderaromaticnepal.com/](https://www.orderaromaticnepal.com/)",
+"[https://aromaticnepal.com/wp-content/uploads/2025/08/Menu_compressed.pdf](https://aromaticnepal.com/wp-content/uploads/2025/08/Menu_compressed.pdf)",
+"[https://www.facebook.com/p/Aromatic-Nepal-61578574435527/](https://www.facebook.com/p/Aromatic-Nepal-61578574435527/)",
+"[https://www.yelp.com/biz/aromatic-nepal-liberty](https://www.yelp.com/biz/aromatic-nepal-liberty)",
+"[https://www.mapquest.com/us/missouri/aromatic-nepal-792339842](https://www.mapquest.com/us/missouri/aromatic-nepal-792339842)",
+"[https://www.instagram.com/p/DP4tM2jkb4k/](https://www.instagram.com/p/DP4tM2jkb4k/)",
+"[https://storeleads.app/reports/menufy/US/city/Liberty](https://storeleads.app/reports/menufy/US/city/Liberty)"
+]
+},
+"kb_structure": {
+"documents": [
+{
+"name": "menu.json",
+"purpose": "Normalized dishes and attributes for safe recommendations and filters",
+"schema": {
+"dish_id": "string UUID",
+"name": "string",
+"category": "enum[Appetizers, MoMo, Curries, Vegetarian, Tandoori, ChefSpecials, Breads, Sides, Beverages, Desserts]",
+"description": "string",
+"ingredients": "string[]",
+"allergens": "string[] enum[dairy,nuts,gluten,egg,soy,shellfish,fish,sesame]",
+"spice_level": "enum[none,mild,medium,hot,extra_hot]",
+"vegetarian": "bool",
+"vegan": "bool",
+"halal": "bool",
+"gluten_free": "bool",
+"upsell_tags": "string[] enum[bread_pair,drink_pair,side_pair,premium,quick_fire,kid_friendly]",
+"recommended_pairings": "string[] dish_id or named drink"
+},
+"example": {
+"dish_id": "dish.momo.steamed",
+"name": "Steamed MoMo",
+"category": "MoMo",
+"description": "Classic steamed dumplings with chicken or veg",
+"ingredients": ["flour wrapper","chicken or veg mix","tomato","spring onion","cilantro","spices"],
+"allergens": ["gluten"],
+"spice_level": "mild",
+"vegetarian": false,
+"vegan": false,
+"halal": true,
+"gluten_free": false,
+"upsell_tags": ["sauce_pair","drink_pair"],
+"recommended_pairings": ["drink.lassi.mango","bread.naan.plain"]
+}
+},
+{
+"name": "glossary.json",
+"purpose": "Cultural and culinary terms with phonetics and concise notes",
+"schema": {
+"term": "string",
+"phonetic": "string",
+"definition": "string",
+"culture_note": "string",
+"related_menu_ids": "string[]"
+},
+"example": {
+"term": "MoMo",
+"phonetic": "MOH-moh",
+"definition": "Nepali dumpling, steamed or fried",
+"culture_note": "Street-food staple across Kathmandu; often served with tomato-chili achar",
+"related_menu_ids": ["dish.momo.steamed","dish.momo.jhol"]
+}
+},
+{
+"name": "allergens.csv",
+"purpose": "Matrix for dish-by-allergen presence and severity",
+"schema": "CSV columns: dish_id,dairy,nuts,gluten,egg,soy,shellfish,fish,sesame,notes",
+"example": {
+"row": "dish.curry.butter_chicken,true,false,false,false,false,false,false,false,contains cream and butter"
+}
+},
+{
+"name": "pairing_rules.json",
+"purpose": "Rule set that maps dish attributes to sides, breads, and drinks",
+"schema": {
+"rule_id": "string",
+"if": "object conditions {category, spice_level, vegetarian, sauce_richness}",
+"then": "object {sides: string[], breads: string[], drinks: string[]}",
+"priority": "int 1 high"
+},
+"example": {
+"rule_id": "pair.rich_mild",
+"if": {"spice_level": "mild", "sauce_richness": "creamy"},
+"then": {"breads": ["bread.naan.plain"], "drinks": ["drink.lassi.salt"]},
+"priority": 2
+}
+},
+{
+"name": "faq.md",
+"purpose": "Operational FAQs for guests",
+"schema": "Markdown Q&A with short answers and verified links where relevant",
+"example": {"Q": "Do you take reservations?", "A": "Walk-in friendly; call for large groups"}
+},
+{
+"name": "brand_voice.md",
+"purpose": "Tone, style, examples, and do-not-say for on-brand GPT responses",
+"schema": "Markdown sections: Tone, Style, Examples, Do-not-say"
+},
+{
+"name": "retrieval_policies.md",
+"purpose": "Rules for citing, freshness windows, and hallucination controls",
+"schema": "Markdown with numbered policies and escalation steps"
+},
+{
+"name": "privacy_and_safety.md",
+"purpose": "PII avoidance, allergen disclaimers, minors and alcohol handling",
+"schema": "Markdown policies and scripts"
+}
+]
+},
+"seed_documents": {
+"menu_json": {
+"dishes": [
+{
+"dish_id": "dish.app.paneer_chilli",
+"name": "Paneer Chilli",
+"category": "Appetizers",
+"description": "Paneer stir-fried with bell peppers, onions, garlic, green chilies, and chili sauce",
+"ingredients": ["paneer","bell pepper","onion","garlic","green chili","chili sauce"],
+"allergens": ["dairy"],
+"spice_level": "medium",
+"vegetarian": true,
+"vegan": false,
+"halal": false,
+"gluten_free": false,
+"upsell_tags": ["drink_pair","side_pair"],
+"recommended_pairings": ["drink.chai.nepali","side.raita"]
+},
+{
+"dish_id": "dish.momo.steamed",
+"name": "Steamed MoMo",
+"category": "MoMo",
+"description": "Classic steamed dumplings with halal chicken or vegetable mix",
+"ingredients": ["wheat wrapper","chicken or veg filling","tomato","spring onion","cilantro","spices"],
+"allergens": ["gluten"],
+"spice_level": "mild",
+"vegetarian": false,
+"vegan": false,
+"halal": true,
+"gluten_free": false,
+"upsell_tags": ["sauce_pair","drink_pair"],
+"recommended_pairings": ["drink.lassi.mango","side.papad"]
+},
+{
+"dish_id": "dish.curry.butter_chicken",
+"name": "Butter Chicken",
+"category": "Curries",
+"description": "Halal chicken simmered in buttery tomato gravy",
+"ingredients": ["chicken","tomato","butter","cream","spices"],
+"allergens": ["dairy"],
+"spice_level": "mild",
+"vegetarian": false,
+"vegan": false,
+"halal": true,
+"gluten_free": true,
+"upsell_tags": ["bread_pair","drink_pair","premium"],
+"recommended_pairings": ["bread.naan.garlic","drink.lassi.sweet"]
+},
+{
+"dish_id": "dish.curry.korma.navaratna",
+"name": "Navaratna Korma",
+"category": "Vegetarian",
+"description": "Creamy curry with nine vegetables and nuts",
+"ingredients": ["mixed vegetables","cashews","cream","yogurt","spices"],
+"allergens": ["dairy","nuts"],
+"spice_level": "mild",
+"vegetarian": true,
+"vegan": false,
+"halal": false,
+"gluten_free": true,
+"upsell_tags": ["bread_pair","drink_pair"],
+"recommended_pairings": ["bread.naan.plain","drink.lassi.salt"]
+},
+{
+"dish_id": "dish.biryani.handi.chicken",
+"name": "Handi Biryani Chicken",
+"category": "Curries",
+"description": "Fragrant basmati rice with Himalayan spices and chicken, served with raita",
+"ingredients": ["basmati rice","chicken","saffron","spices","raita"],
+"allergens": ["dairy"],
+"spice_level": "medium",
+"vegetarian": false,
+"vegan": false,
+"halal": true,
+"gluten_free": true,
+"upsell_tags": ["drink_pair"],
+"recommended_pairings": ["drink.mohi","side.onion_salad"]
+},
+{
+"dish_id": "dish.app.chicken65",
+"name": "Chicken 65",
+"category": "Appetizers",
+"description": "South Indian style fried chicken bites with yogurt and curry leaves",
+"ingredients": ["chicken","yogurt","spices","curry leaves"],
+"allergens": ["dairy"],
+"spice_level": "hot",
+"vegetarian": false,
+"vegan": false,
+"halal": true,
+"gluten_free": false,
+"upsell_tags": ["drink_pair","quick_fire"],
+"recommended_pairings": ["drink.chai.nepali"]
+},
+{
+"dish_id": "bread.naan.plain",
+"name": "Plain Naan",
+"category": "Breads",
+"description": "Soft tandoor-baked flatbread",
+"ingredients": ["wheat flour","yeast","salt"],
+"allergens": ["gluten"],
+"spice_level": "none",
+"vegetarian": true,
+"vegan": false,
+"halal": false,
+"gluten_free": false,
+"upsell_tags": ["side_pair"],
+"recommended_pairings": ["dish.curry.butter_chicken"]
+},
+{
+"dish_id": "drink.lassi.mango",
+"name": "Mango Lassi",
+"category": "Beverages",
+"description": "Creamy yogurt drink with sweet mango",
+"ingredients": ["yogurt","mango","sugar"],
+"allergens": ["dairy"],
+"spice_level": "none",
+"vegetarian": true,
+"vegan": false,
+"halal": false,
+"gluten_free": true,
+"upsell_tags": ["dessert_pair"],
+"recommended_pairings": ["dish.curry.korma.navaratna","dish.curry.butter_chicken"]
+}
+],
+"notes": "Values verified from the public PDF menu; prices ommitted in KB to avoid drift. "
+},
+"glossary_json": {
+"terms": [
+{"term": "MoMo", "phonetic": "MOH-moh", "definition": "Nepali dumpling, steamed, pan-seared, fried, or in broth", "culture_note": "Popular across Nepal; commonly paired with tomato-chili achar", "related_menu_ids": ["dish.momo.steamed"]},
+{"term": "Thali", "phonetic": "THA-lee", "definition": "Complete platter with rice, dal, vegetables, pickles and dessert", "culture_note": "Everyday Nepali meal format with small bowls", "related_menu_ids": []},
+{"term": "Saag", "phonetic": "SAHG", "definition": "Spinach-based curry", "culture_note": "Mild, iron-rich; pairs with naan or rice", "related_menu_ids": []},
+{"term": "Lassi", "phonetic": "LAH-see", "definition": "Yogurt-based drink, sweet or salted", "culture_note": "Cools palate with spicy dishes", "related_menu_ids": ["drink.lassi.mango"]}
+]
+},
+"allergens_csv": "dish_id,dairy,nuts,gluten,egg,soy,shellfish,fish,sesame,notes\n dish.app.paneer_chilli,true,false,false,false,false,false,false,false,Paneer contains dairy\n dish.momo.steamed,false,false,true,false,false,false,false,false,Wheat wrapper\n dish.curry.butter_chicken,true,false,false,false,false,false,false,false,Cream and butter\n dish.curry.korma.navaratna,true,true,false,false,false,false,false,false,Cashews and cream\n dish.biryani.handi.chicken,true,false,false,false,false,false,false,false,Raita contains dairy\n bread.naan.plain,false,false,true,false,false,false,false,false,Wheat-based bread\n drink.lassi.mango,true,false,false,false,false,false,false,false,Yogurt-based",
+"pairing_rules_json": {
+"rules": [
+{"rule_id": "rich_mild_pair_lassi", "if": {"spice_level": "mild", "category": "Curries"}, "then": {"drinks": ["drink.lassi.mango"]}, "priority": 2},
+{"rule_id": "creamy_needs_plain_bread", "if": {"spice_level": "mild", "category": "Curries"}, "then": {"breads": ["bread.naan.plain"]}, "priority": 2},
+{"rule_id": "hot_appetizer_cool_chai", "if": {"category": "Appetizers", "spice_level": "hot"}, "then": {"drinks": ["drink.chai.nepali"]}, "priority": 3},
+{"rule_id": "biryani_side_onion", "if": {"name_contains": "Biryani"}, "then": {"sides": ["side.onion_salad"]}, "priority": 3}
+]
+},
+"faq_md": "## FAQ\n\n**Where are you located?** 322 Rte 291, Liberty, MO 64068. ([MapQuest][3])\n\n**What are your hours?** Public listings show roughly 11 AM to 9 PM most days; Monday status varies across sources [VERIFY]. Please check the order site for today’s hours. ([Yelp][5])\n\n**Do you take reservations?** Walk-ins welcome; call for large groups at (816) 439-6000. ([Aromatic Nepal][1])\n\n**Spice scale?** Most dishes can be prepared mild, medium, hot, or extra hot. \n\n**Are meats halal?** Menu notes all meat options are halal. \n\n**Dietary options?** Vegetarian options across appetizers and mains; some items can be made gluten-free. Ask staff to confirm cross-contact risks. \n\n**Online ordering?** Order at orderaromaticnepal.com. ([orderaromaticnepal.com][2])",
+"brand_voice_md": "## Tone\nWarm, confident, and helpful. Celebrate Nepali heritage while staying concise.\n\n## Style\n- Short sentences. Active voice. Offer 2 to 3 clear options.\n- Lead with guest goals, then explain the why.\n- Use plain words with optional cultural notes.\n\n## Examples\n- "You want creamy and mild. Try Butter Chicken or Navaratna Korma. Plain naan balances the sauce."\n- "If you like dumplings, Steamed MoMo is classic. Jhol MoMo adds a tangy tomato broth."\n\n## Do-not-say\n- Overpromises about health benefits\n- Hard medical statements\n- Absolute claims like "best in town" unless citing reviews",
+"retrieval_policies_md": "## Retrieval and Freshness\n1) Cite menu facts from the PDF or official site; include a source marker in internal logs. 2) Treat prices as volatile and do not state them unless sourced in-session from the order site. 3) Prefer structured KB over long-text scraping. 4) If a requested dish is missing, ask staff or offer a nearest alternative. 5) Respect a 30-day freshness window for menu items unless reconfirmed.\n\n## Hallucination Controls\n- Never invent ingredients or allergen statuses. If unknown, say so and escalate to staff.\n- Limit recommendations to dishes in `menu.json` unless staff adds a verified special.\n\n## Escalation\n- If the guest has severe allergies or conflicting info, stop and call staff.",
+"privacy_and_safety_md": "## Privacy\n- Do not collect or store names, phone numbers, or contact details. Session-only preferences only.\n- No tracking cookies or persistent IDs through the GPT.\n\n## Allergen and Medical Disclaimer\n- Ingredients may vary. Cross-contact is possible. The assistant provides menu information only and is not medical advice. Guests with allergies must notify staff and review printed allergen notices before ordering.\n\n## Alcohol\n- If age is unclear, present non-alcoholic options first. Do not recommend alcohol to minors.\n\n## Safety Scripts\n- "I can suggest dishes, but for your nut allergy a staff member will confirm preparation details before you order.""
+},
+"behavior_blueprint": {
+"flowchart": "Start → Detect language → Offer quick recommend or guided interview → If Quick: ask taste + spice + dietary toggle → Generate 2 to 3 options → Allergen confirmation step → Offer pairings (bread, drink, side) → Provide order pathway (QR or staff handoff) → If Guided: ask cuisine familiarity, protein, spice, allergens → Rank dishes → Show cultural notes on demand → Confirm selection → Upsell add-on → Escalate to staff if uncertainty → End",
+"message_templates": {
+"Quick_Recommend": "Welcome to Aromatic Nepal. Quick 3-question match. Any allergens? What spice level do you enjoy? Choose protein or vegetarian. Here are 2 to 3 matches with a short why.",
+"Guided_Interview": "Tell me what you’re in the mood for: creamy, tangy, or smoky. Any dietary needs? I’ll suggest mains with sides and a drink, then confirm allergens with you and staff.",
+"Cultural_Explainer": "MoMo are Nepali dumplings. Steamed is classic, Jhol comes in a tangy tomato broth. Want a quick history or just the best pick for you?",
+"Pairing_Helper": "You chose a creamy mild curry. Plain naan balances the sauce and a salted lassi keeps it refreshing. Want those added?"
+}
+},
+"pilot_plan": {
+"design": "2-week pilot using table QR codes and a cashier tablet. Scope limited to 20 top items plus 6 breads, 6 drinks, and 6 sides. English at launch with Nepali terms explained. Staff uses the GPT for complex questions during peak periods.",
+"kpis": ["QR engagement rate", "Recommendation click-through to order", "Add-on attach rate for breads and drinks", "Average check vs control", "Median resolution time", "Guest thumbs-up rate"],
+"ab_test": "A/B between Minimalist 2-choice vs Rich 3-choice recommendation cards at dinner service",
+"success_thresholds": {
+"engagement_rate": "≥35%",
+"attach_rate": "≥12% uplift on breads or drinks",
+"avg_check_uplift": "≥7% vs control",
+"resolution_time": "≤45 seconds median",
+"guest_rating": "≥4.5/5 thumbs-up"
+}
+},
+"risks_and_guardrails": [
+{"edge_case": "Conflicting hours across sources", "mitigation": "Display live hours from order site and mark store status [VERIFY] if mismatch; provide phone tap-to-call. ([orderaromaticnepal.com][2])"},
+{"edge_case": "Item sold out", "mitigation": "Offer nearest substitute by category and spice; flag as 86’d in KB until reset by manager"},
+{"edge_case": "Severe nut or dairy allergy", "mitigation": "Stop recommendations and summon staff; show allergen disclaimer"},
+{"edge_case": "Guest requests price guarantees", "mitigation": "Avoid quoting prices; deep link to order site menu for current pricing. ([orderaromaticnepal.com][2])"},
+{"edge_case": "Language misunderstandings", "mitigation": "One-tap switch to English or Nepali; keep responses under 60 words"},
+{"edge_case": "Off-menu substitutions", "mitigation": "Offer standard sides and breads only; route custom prep to staff approval"},
+{"edge_case": "Minors asking about alcohol", "mitigation": "Deflect to non-alcoholic drinks and chai; no age collection"},
+{"edge_case": "Network outage", "mitigation": "Fallback to static printed mini-guides and staff scripts; cache KB locally"},
+{"edge_case": "Kitchen throughput constraints", "mitigation": "During peaks, prioritize quick_fire tags in suggestions"},
+{"edge_case": "Specials not in KB", "mitigation": "Mark as [VERIFY] and require staff-confirmed ingredient list before recommending"}
+],
+"assumptions": [
+{"statement": "Menufy powers the online ordering flow", "confidence": "High", "default": "Use orderaromaticnepal.com for price and availability references. ([orderaromaticnepal.com][2])"},
+{"statement": "All meats are halal per menu PDF", "confidence": "High", "default": "Respect halal tag in dish metadata. "},
+{"statement": "Spice levels are configurable across most dishes", "confidence": "High", "default": "Expose mild to extra hot toggles. "},
+{"statement": "Hours vary by day and may change", "confidence": "Low", "default": "Show dynamic hours link and phone; avoid hard-coding. ([Yelp][5])"},
+{"statement": "Biryani served with raita includes dairy", "confidence": "High", "default": "Flag dairy in allergens. "},
+{"statement": "Veg and gluten-free options require staff confirmation for cross-contact", "confidence": "High", "default": "Display disclaimer and escalate if severe. "},
+{"statement": "Facebook is the most current channel for announcements", "confidence": "Medium", "default": "Link FB posts for specials; treat as promotional, not canonical. ([Facebook][4])"},
+{"statement": "Pilot will run English-first with optional Nepali terms", "confidence": "Medium", "default": "Queue Spanish for phase 2"}
+],
+"next_steps": [
+"Confirm pilot KPIs and success thresholds with owner",
+"Approve brand_voice.md and do-not-say list",
+"Validate hours, reservations policy, and parking details [VERIFY]",
+"Provide any house-made allergen sheets or recipes for sensitive items",
+"Select 20 pilot dishes and photos for the UI",
+"Nominate a staff owner for weekly KB updates",
+"Set up QR codes for tables and takeout counter",
+"Decide on bilingual scope for launch",
+"Schedule staff training with 10-minute role-play scripts",
+"Enable basic analytics pipeline for engagement and attach-rate tracking"
+]
+}
+
+[1]: https://www.aromaticnepal.com/?utm_source=chatgpt.com "Aromatic Nepal – Tradition Carved In Taste"
+[2]: https://www.orderaromaticnepal.com/?utm_source=chatgpt.com "Aromatic Nepal - LIBERTY, MO 64068 (Menu & Order Online)"
+[3]: https://www.mapquest.com/us/missouri/aromatic-nepal-792339842?utm_source=chatgpt.com "Aromatic Nepal, 291 N State Route 291, Liberty, MO 64068 ..."
+[4]: https://www.facebook.com/61578574435527/posts/-exciting-news-liberty-we-are-thrilled-to-announce-that-aromatic-nepal-is-offici/122125980176952481/?utm_source=chatgpt.com "🌟 Exciting News, Liberty! 🌟 We are thrilled to announce ..."
+[5]: https://www.yelp.com/biz/aromatic-nepal-liberty?utm_source=chatgpt.com "AROMATIC NEPAL - Updated November 2025 - 12 Photos"
+[6]: https://www.instagram.com/p/DP4tM2jkb4k/?utm_source=chatgpt.com "kccheeses Gorgeous restaurant with ..."
+[7]: https://storeleads.app/reports/menufy/US/city/Liberty?utm_source=chatgpt.com "Menufy Stores in Liberty, United States"
