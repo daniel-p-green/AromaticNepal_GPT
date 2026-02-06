@@ -124,14 +124,14 @@ const HookScene: React.FC = () => {
           }}
         >
           <Layers size={16} color={geist.colors.blue700} />
-          <span style={{fontFamily: geist.fonts.mono, fontSize: 15, color: geist.colors.gray1000}}>Template-first pilot</span>
+          <span style={{fontFamily: geist.fonts.mono, fontSize: 15, color: geist.colors.gray1000}}>Start here</span>
         </div>
         <div style={{display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12}}>
           <div style={{transform: `scale(${iconScale})`}}>
             <AlertTriangle size={74} color={geist.colors.red700} />
           </div>
           <div style={{fontFamily: geist.fonts.sans, color: BRIGHT_COPY, fontSize: 32, fontWeight: 500, lineHeight: 1.2, maxWidth: 500}}>
-            Hospitality is emotional work under constant time pressure.
+            Restaurant work is already hard.
           </div>
         </div>
         <h1
@@ -147,7 +147,7 @@ const HookScene: React.FC = () => {
             transform: `translateY(${slideUp(frame, fps, 0.1, 18)}px)`,
           }}
         >
-          Can service support scale?
+          Can a GPT help without sounding robotic?
         </h1>
         <div
           style={{
@@ -169,14 +169,14 @@ const HookScene: React.FC = () => {
 const ProblemScene: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const pains = ['Menu answers drift by shift', 'Allergy questions need explicit handoff', 'Owner stories do not reach every table'];
+  const pains = ['Staff give different answers for the same dish', 'Allergy questions create long pauses', 'The owner story gets lost on busy nights'];
 
   return (
     <AbsoluteFill style={{backgroundColor: geist.colors.background100}}>
       <BackgroundField frame={frame} duration={PROBLEM_FRAMES} accent={geist.colors.red700} variant="problem" />
       <SafeZone>
         <h2 style={{margin: '0 0 18px 0', fontFamily: geist.fonts.sans, color: geist.colors.gray1000, fontWeight: 600, fontSize: 60, lineHeight: 1.05, letterSpacing: -1.8}}>
-          Common breakdowns
+          What breaks first
         </h2>
         <div style={{display: 'flex', flexDirection: 'column', gap: 12}}>
           {pains.map((pain, index) => {
@@ -228,9 +228,9 @@ const SolutionScene: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const stacks = [
-    {label: 'Prompt guardrails', detail: 'Boundaries + escalation language', Icon: Shield, color: geist.colors.green700},
-    {label: 'Source-backed KB', detail: 'Menu facts + freshness checks', Icon: BookOpen, color: geist.colors.blue700},
-    {label: 'Transcript QA gate', detail: 'Release only after pass criteria', Icon: CheckCircle, color: geist.colors.green700},
+    {label: 'Answer style guide', detail: 'How to reply and when to hand off', Icon: Shield, color: geist.colors.green700},
+    {label: 'Menu facts file', detail: 'One source of truth for dishes', Icon: BookOpen, color: geist.colors.blue700},
+    {label: 'Transcript checks', detail: 'Real test chats before launch', Icon: CheckCircle, color: geist.colors.green700},
   ];
 
   return (
@@ -238,10 +238,10 @@ const SolutionScene: React.FC = () => {
       <BackgroundField frame={frame} duration={SOLUTION_FRAMES} accent={geist.colors.green700} variant="solution" />
       <SafeZone>
         <h2 style={{margin: 0, fontFamily: geist.fonts.sans, color: geist.colors.gray1000, fontWeight: 600, fontSize: 60, lineHeight: 1.05, letterSpacing: -1.7}}>
-          Build it as a template system
+          What goes in the template
         </h2>
         <p style={{margin: '12px 0 16px 0', fontFamily: geist.fonts.sans, color: BRIGHT_COPY, fontSize: 30, lineHeight: 1.24}}>
-          Reusable components beat one-off prompts.
+          Keep it simple and testable.
         </p>
         <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>
           {stacks.map((item, index) => {
@@ -298,7 +298,7 @@ const CtaScene: React.FC = () => {
           }}
         >
           <CheckCircle size={16} color={geist.colors.green700} />
-          <span style={{fontFamily: geist.fonts.mono, color: geist.colors.gray1000, fontSize: 15}}>Unofficial concept | Unpaid</span>
+          <span style={{fontFamily: geist.fonts.mono, color: geist.colors.gray1000, fontSize: 15}}>Unofficial demo | unpaid</span>
         </div>
         <h2
           style={{
@@ -313,10 +313,10 @@ const CtaScene: React.FC = () => {
             transform: `translateY(${slideUp(frame, fps, 0.08, 16)}px)`,
           }}
         >
-          Share the template mindset, not a branded deliverable.
+          Share the method, not the branding.
         </h2>
         <p style={{margin: '14px 0 20px 0', fontFamily: geist.fonts.sans, color: BRIGHT_COPY, fontSize: 31, lineHeight: 1.26}}>
-          Help teams train faster and give diners clear, culture-rich menu guidance.
+          This helps teams train faster and gives diners clearer answers.
         </p>
         <div
           style={{
@@ -333,7 +333,7 @@ const CtaScene: React.FC = () => {
             fontWeight: 600,
           }}
         >
-          Start your own template
+          Start from this template
           <ArrowRightCircle size={19} color="#FFFFFF" />
         </div>
       </SafeZone>

@@ -32,10 +32,10 @@ const LANDSCAPE_SCENES: Scene[] = [
     id: 'intro',
     layout: 'hero',
     frames: 120,
-    tag: 'Template-first pilot',
-    title: 'Service can scale without losing soul.',
+    tag: 'Why this matters',
+    title: 'Most restaurants answer the same questions all day.',
     subtitle:
-      'This unpaid concept shows how restaurants can share owner intent, menu clarity, and safer guidance at table speed.',
+      'I built this unpaid demo after seeing how much time goes to menu repeats, allergy checks, and telling the story behind each dish.',
     accent: geist.colors.blue700,
     Icon: Layers,
   },
@@ -43,20 +43,20 @@ const LANDSCAPE_SCENES: Scene[] = [
     id: 'problem',
     layout: 'split',
     frames: 125,
-    tag: 'Operational pressure',
-    title: 'Teams get stretched fast.',
-    subtitle: 'Rush-hour ambiguity creates inconsistent answers and preventable guest friction.',
+    tag: 'Where it breaks',
+    title: 'Busy hours expose every gap.',
+    subtitle: 'When facts are fuzzy, service slows down and everyone feels it.',
     accent: geist.colors.red700,
     Icon: AlertTriangle,
-    points: ['Menu explanations vary by shift', 'Allergy moments require cleaner escalation', 'Founder stories rarely reach every diner'],
+    points: ['The same dish gets described three different ways', 'Allergy questions pause the whole line', 'Great stories stay in the kitchen'],
   },
   {
     id: 'template',
     layout: 'grid',
     frames: 130,
-    tag: 'Reusable building blocks',
-    title: 'A practical template stack',
-    subtitle: 'Policy + data + QA become a repeatable service system, not a one-off bot.',
+    tag: 'What the template includes',
+    title: 'A small system your team can trust',
+    subtitle: 'No magic. Just clear rules, clean facts, and testing before launch.',
     accent: geist.colors.green700,
     Icon: Users,
   },
@@ -64,9 +64,9 @@ const LANDSCAPE_SCENES: Scene[] = [
     id: 'flow',
     layout: 'timeline',
     frames: 130,
-    tag: 'Adoption flow',
-    title: 'Four-step rollout path',
-    subtitle: 'Ship carefully, measure outcomes, and refresh facts monthly.',
+    tag: 'How to roll it out',
+    title: 'Start simple, then tighten',
+    subtitle: 'Ship a first version, learn fast, and keep facts current.',
     accent: geist.colors.amber700,
     Icon: Shield,
   },
@@ -74,21 +74,21 @@ const LANDSCAPE_SCENES: Scene[] = [
     id: 'cta',
     layout: 'cta',
     frames: 120,
-    tag: 'What this is',
-    title: 'A reusable demo template for operators.',
-    subtitle: 'Designed for training and guest support. Not official deployment and not paid client work.',
+    tag: 'Reality check',
+    title: 'This is a template, not paid client work.',
+    subtitle: 'Use it as a starting draft, swap in your own menu and voice, and keep it unofficial unless you have permission.',
     accent: geist.colors.blue700,
     Icon: BookOpen,
   },
 ];
 
-const PROCESS_STEPS = ['Map canonical menu and policy sources', 'Define escalation and uncertainty language', 'Run transcript-based QA before publishing', 'Review freshness and update monthly'];
+const PROCESS_STEPS = ['Pull menu facts from one source', 'Write safe fallback and handoff language', 'Run transcript checks before publishing', 'Review feedback and refresh monthly'];
 
 const GRID_ITEMS: GridItem[] = [
-  {label: 'Prompt policy', detail: 'Tone, boundaries, and fallback behavior', Icon: Shield, color: geist.colors.green700},
-  {label: 'Knowledge base', detail: 'Source-backed menu and allergy facts', Icon: BookOpen, color: geist.colors.blue700},
-  {label: 'QA transcripts', detail: 'Pass-fail checks for risky scenarios', Icon: CheckCircle, color: geist.colors.green700},
-  {label: 'Owner voice', detail: 'Story, culture, and seasoning context', Icon: Zap, color: geist.colors.amber700},
+  {label: 'Answer guide', detail: 'How to reply and when to escalate', Icon: Shield, color: geist.colors.green700},
+  {label: 'Menu source', detail: 'One place for current dish facts', Icon: BookOpen, color: geist.colors.blue700},
+  {label: 'Test chats', detail: 'Real scenarios with pass-fail checks', Icon: CheckCircle, color: geist.colors.green700},
+  {label: 'Owner voice', detail: 'Short culture notes in plain language', Icon: Zap, color: geist.colors.amber700},
 ];
 
 export const GEIST_LANDSCAPE_FRAMES = LANDSCAPE_SCENES.reduce((sum, scene) => sum + scene.frames, 0);
@@ -197,7 +197,7 @@ const SceneShell: React.FC<{scene: Scene; children: React.ReactNode}> = ({scene,
 const HeroLayout: React.FC<{scene: Scene}> = ({scene}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const supportCards = ['Answer repetitive menu questions consistently', 'Preserve owner perspective for every guest', 'Escalate uncertainty and allergy risk safely'];
+  const supportCards = ['Guests get clear answers faster', 'New staff ramp up with less stress', 'Owner perspective reaches every table'];
 
   return (
     <div style={{display: 'grid', gridTemplateRows: 'auto auto', gap: 26, alignContent: 'center', height: '100%'}}>
@@ -434,7 +434,7 @@ const CtaLayout: React.FC<{scene: Scene}> = ({scene}) => {
             transform: `translateY(${slideUp(frame, fps, 0.18, 14)}px)`,
           }}
         >
-          Adapt this playbook
+          Copy this template
           <ArrowRightCircle size={20} color="#FFFFFF" />
         </div>
       </div>
@@ -453,10 +453,10 @@ const CtaLayout: React.FC<{scene: Scene}> = ({scene}) => {
       >
         <div style={{fontFamily: geist.fonts.mono, fontSize: 16, color: geist.colors.gray900}}>PROJECT STATUS</div>
         <div style={{fontFamily: geist.fonts.sans, fontSize: 24, color: geist.colors.gray1000, lineHeight: 1.22}}>
-          Independent concept for a shareable template
+          Independent demo built for learning
         </div>
         <div style={{fontFamily: geist.fonts.sans, fontSize: 22, color: BRIGHT_COPY, lineHeight: 1.25}}>
-          Family-friend context, unpaid, and explicitly unofficial.
+          Family-friend context, unpaid, and unofficial.
         </div>
       </div>
     </div>

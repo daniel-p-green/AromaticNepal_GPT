@@ -21,26 +21,26 @@ const SQUARE_SCENES: SquareScene[] = [
     id: 'hook',
     frames: 120,
     tag: 'LinkedIn-safe format',
-    title: 'A service system, not a gimmick.',
-    subtitle: 'Template-first GPT design can preserve owner voice, improve consistency, and support teams under pressure.',
+    title: 'What if every table got the same clear answer?',
+    subtitle: 'This demo shows a practical GPT setup that restaurants can adapt in a day.',
     accent: geist.colors.blue700,
     Icon: Layers,
   },
   {
     id: 'problem',
     frames: 120,
-    tag: 'Operational pain',
-    title: 'Where service breaks down',
-    subtitle: 'Shift-to-shift answer drift, allergy uncertainty, and repeated menu explanations slow teams down.',
+    tag: 'Real pressure points',
+    title: 'Why this problem keeps showing up',
+    subtitle: 'Teams move fast. Answers drift. Allergy questions get risky when facts are fuzzy.',
     accent: geist.colors.red700,
     Icon: AlertTriangle,
   },
   {
     id: 'system',
     frames: 120,
-    tag: 'Template architecture',
-    title: 'Four reusable blocks',
-    subtitle: 'Policy, source-backed knowledge, transcript QA, and clear escalation language.',
+    tag: 'What is actually inside',
+    title: 'Four parts you can maintain',
+    subtitle: 'A small stack that works without a full tech team.',
     accent: geist.colors.green700,
     Icon: BookOpen,
   },
@@ -48,18 +48,18 @@ const SQUARE_SCENES: SquareScene[] = [
     id: 'cta',
     frames: 120,
     tag: 'What this is',
-    title: 'A reusable demo for operators',
-    subtitle: 'Independent, unofficial, and designed to help restaurants build safer and more memorable guest support.',
+    title: 'Use this as your starting draft',
+    subtitle: 'Replace the menu and voice, test with transcripts, and keep rollout clearly unofficial.',
     accent: geist.colors.blue700,
     Icon: CheckCircle,
   },
 ];
 
 const SYSTEM_ITEMS = [
-  {label: 'Prompt policy', Icon: Shield, color: geist.colors.green700},
-  {label: 'Knowledge base', Icon: BookOpen, color: geist.colors.blue700},
-  {label: 'QA transcripts', Icon: CheckCircle, color: geist.colors.green700},
-  {label: 'Escalation paths', Icon: AlertTriangle, color: geist.colors.amber700},
+  {label: 'Answer guide', Icon: Shield, color: geist.colors.green700},
+  {label: 'Menu facts', Icon: BookOpen, color: geist.colors.blue700},
+  {label: 'Test chats', Icon: CheckCircle, color: geist.colors.green700},
+  {label: 'Handoff rules', Icon: AlertTriangle, color: geist.colors.amber700},
 ];
 
 const sceneStarts = SQUARE_SCENES.reduce<number[]>((acc, scene) => {
@@ -260,11 +260,11 @@ const CtaScene: React.FC<{scene: SquareScene}> = ({scene}) => {
           opacity: fadeIn(frame, fps, 0.2, 0.28),
           transform: `translateY(${slideUp(frame, fps, 0.2, 10)}px)`,
         }}
-      >
-        Use this template
-        <ArrowRightCircle size={18} color="#FFFFFF" />
+        >
+          Adapt this template
+          <ArrowRightCircle size={18} color="#FFFFFF" />
+        </div>
       </div>
-    </div>
   );
 };
 
